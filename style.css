@@ -1,0 +1,1109 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+}
+
+.home-container {
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.logo {
+    width: 220px;
+    max-width: 70%;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: 42px;
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+h2 {
+    font-size: 30px;
+    letter-spacing: 12px;
+    margin-top: 5px;
+}
+
+.tagline {
+    color: #aaa;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.info {
+    margin: 35px auto;
+    padding: 20px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    background: #111;
+}
+
+.info p {
+    margin: 10px 0;
+    font-size: 15px;
+}
+
+.start-btn {
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+
+    padding: 15px 45px;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    border-radius: 5px;
+
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+@media (max-width: 600px) {
+
+    .logo {
+        width: 180px;
+    }
+
+    h1 {
+        font-size: 30px;
+        letter-spacing: 3px;
+    }
+
+    h2 {
+        font-size: 23px;
+        letter-spacing: 8px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .info {
+        margin: 25px auto;
+    }
+
+    .start-btn {
+        width: 90%;
+    }
+}
+.quiz-container {
+    width: 90%;
+    max-width: 800px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 20px;
+}
+
+.quiz-header h1 {
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+
+#level-title {
+    border: 1px solid #fff;
+    padding: 8px 15px;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #222;
+    margin-top: 12px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress {
+    height: 100%;
+    width: 5%;
+    background: #fff;
+    transition: 0.3s;
+}
+
+
+.question-card {
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 35px;
+    margin-top: 30px;
+}
+
+.question-card h2 {
+    font-size: 24px;
+    letter-spacing: 0;
+    margin-bottom: 30px;
+}
+
+.options {
+    display: grid;
+    gap: 15px;
+}
+
+.option {
+    width: 100%;
+    min-height: 60px;
+
+    display: flex;
+    align-items: center;
+
+    background: #000;
+    color: #fff;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    padding: 12px 18px;
+
+    cursor: pointer;
+    text-align: left;
+
+    transition: 0.2s;
+}
+
+.option span {
+    width: 35px;
+    height: 35px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #555;
+    border-radius: 50%;
+
+    margin-right: 15px;
+
+    font-weight: bold;
+}
+
+.option p {
+    margin: 0;
+    font-size: 15px;
+}
+
+.option:hover {
+    border-color: #fff;
+}
+
+.option.selected {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+.option.selected span {
+    border-color: #000;
+}
+
+
+#next-btn {
+    width: 100%;
+    margin-top: 25px;
+
+    padding: 15px;
+
+    background: #fff;
+    color: #000;
+
+    border: 2px solid #fff;
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+#next-btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+#next-btn:disabled {
+    background: #333;
+    color: #777;
+    border-color: #333;
+    cursor: not-allowed;
+}
+
+
+@media (max-width: 600px) {
+
+    .quiz-container {
+        width: 94%;
+        padding: 20px 0;
+    }
+
+    .quiz-header h1 {
+        font-size: 18px;
+    }
+
+    #level-title {
+        font-size: 11px;
+        padding: 7px 10px;
+    }
+
+    .question-card {
+        padding: 20px;
+    }
+
+    .question-card h2 {
+        font-size: 19px;
+        line-height: 1.4;
+    }
+
+    .option {
+        min-height: 55px;
+    }
+}
+.levels-container {
+    width: 92%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+}
+
+.levels-header {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+.back-btn {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000;
+    color: #fff;
+    border: 1px solid #555;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.levels-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.levels-header h1 {
+    font-size: 32px;
+    letter-spacing: 4px;
+}
+
+.levels-header p {
+    color: #888;
+    margin-top: 12px;
+    font-size: 15px;
+}
+
+.levels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.level-card {
+    position: relative;
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 35px 25px;
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level-card.unlocked {
+    border-color: #fff;
+}
+
+.level-card.locked {
+    opacity: 0.5;
+}
+
+.level-number {
+    font-size: 14px;
+    color: #777;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.level-card h2 {
+    font-size: 28px;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.level-card h3 {
+    font-size: 16px;
+    letter-spacing: 5px;
+    margin-top: 8px;
+}
+
+.questions-count {
+    color: #aaa;
+    font-size: 13px;
+    margin-top: 25px;
+}
+
+.status {
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+.lock-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.level-card button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.level-card button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.level-card button:disabled {
+    background: #333;
+    color: #777;
+    border-color: #333;
+    cursor: not-allowed;
+}
+
+.level-message {
+    margin-top: 30px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+@media (max-width: 700px) {
+
+    .levels-container {
+        width: 94%;
+        padding-top: 25px;
+    }
+
+    .levels-header {
+        margin-bottom: 30px;
+        padding-top: 45px;
+    }
+
+    .back-btn {
+        top: 0;
+        left: 0;
+    }
+
+    .levels-logo {
+        width: 100px;
+    }
+
+    .levels-header h1 {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
+    .levels-header p {
+        font-size: 13px;
+    }
+
+    .levels-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .level-card {
+        min-height: 280px;
+        padding: 25px 20px;
+    }
+}
+.result-container {
+    width: 92%;
+    max-width: 650px;
+    margin: auto;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.result-logo {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+.result-container h1 {
+    font-size: 32px;
+    letter-spacing: 5px;
+}
+
+.result-level {
+    color: #aaa;
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-top: 10px;
+}
+
+.result-card {
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 40px 25px;
+    margin-top: 35px;
+}
+
+.result-label {
+    color: #888;
+    font-size: 13px;
+    letter-spacing: 3px;
+}
+
+.score-display {
+    margin-top: 15px;
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.total-score {
+    color: #555;
+    font-size: 35px;
+}
+
+.percentage {
+    font-size: 24px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+.result-status {
+    margin: 25px auto 15px;
+    padding: 12px 25px;
+    width: fit-content;
+    border: 2px solid #fff;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.result-status.passed {
+    background: #fff;
+    color: #000;
+}
+
+.result-status.failed {
+    background: #000;
+    color: #fff;
+}
+
+.result-message {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.result-buttons {
+    display: grid;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.result-buttons button {
+    width: 100%;
+    padding: 14px;
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.result-buttons button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.result-buttons .secondary-btn {
+    background: #000;
+    color: #fff;
+    border-color: #444;
+}
+
+.result-buttons .secondary-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+@media (max-width: 600px) {
+
+    .result-container {
+        width: 94%;
+        padding: 25px 0;
+    }
+
+    .result-logo {
+        width: 95px;
+    }
+
+    .result-container h1 {
+        font-size: 24px;
+        letter-spacing: 3px;
+    }
+
+    .result-card {
+        padding: 30px 20px;
+        margin-top: 25px;
+    }
+
+    .score-display {
+        font-size: 55px;
+    }
+
+    .total-score {
+        font-size: 28px;
+    }
+
+    .percentage {
+        font-size: 21px;
+    }
+}
+.name-container {
+    width: 92%;
+    max-width: 550px;
+    margin: auto;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.name-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+.name-container h1 {
+    font-size: 38px;
+    letter-spacing: 4px;
+}
+
+.name-container h2 {
+    font-size: 26px;
+    letter-spacing: 10px;
+    margin-top: 5px;
+}
+
+.name-subtitle {
+    color: #888;
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+.name-card {
+    background: #111;
+    border: 1px solid #444;
+    border-radius: 12px;
+    padding: 35px 25px;
+    margin-top: 35px;
+}
+
+.name-card label {
+    display: block;
+    text-align: left;
+    color: #aaa;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.name-card input {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    outline: none;
+    font-size: 16px;
+}
+
+.name-card input:focus {
+    border-color: #fff;
+}
+
+.name-card input::placeholder {
+    color: #555;
+}
+
+.name-card button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.name-card button:hover {
+    background: #000;
+    color: #fff;
+}
+
+#name-error {
+    color: #fff;
+    font-size: 13px;
+    text-align: left;
+    margin-top: 8px;
+    min-height: 18px;
+}
+
+
+@media (max-width: 600px) {
+
+    .name-container {
+        width: 94%;
+        padding: 25px 0;
+    }
+
+    .name-logo {
+        width: 110px;
+    }
+
+    .name-container h1 {
+        font-size: 28px;
+        letter-spacing: 3px;
+    }
+
+    .name-container h2 {
+        font-size: 21px;
+        letter-spacing: 7px;
+    }
+
+    .name-card {
+        padding: 28px 20px;
+    }
+
+}
+.player-name {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+.certificate-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 35px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.certificate {
+    width: 100%;
+    max-width: 1000px;
+    background: #fff;
+    color: #000;
+    padding: 12px;
+    border: 1px solid #777;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
+}
+
+.certificate-border {
+    border: 6px double #000;
+    min-height: 650px;
+    padding: 45px 55px;
+    text-align: center;
+    position: relative;
+}
+
+.certificate-logo {
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.certificate-small-title {
+    font-size: 13px;
+    letter-spacing: 5px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.certificate h1 {
+    font-size: 42px;
+    letter-spacing: 8px;
+    margin: 15px 0 3px;
+}
+
+.certificate h2 {
+    font-size: 20px;
+    letter-spacing: 6px;
+    margin: 0;
+}
+
+.certificate-presented {
+    margin-top: 35px;
+    font-size: 15px;
+    color: #444;
+}
+
+.certificate-name {
+    margin-top: 18px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 38px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.name-line {
+    width: 55%;
+    height: 1px;
+    background: #000;
+    margin: 8px auto 20px;
+}
+
+
+.certificate-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.7;
+    color: #333;
+}
+
+.certificate-score {
+    display: flex;
+    justify-content: center;
+    gap: 55px;
+    margin-top: 30px;
+}
+
+.certificate-score div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.certificate-score span {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.certificate-score strong {
+    font-size: 20px;
+}
+
+
+.total-score-certificate {
+    margin-top: 25px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.total-score-certificate strong {
+    font-size: 16px;
+}
+
+.total-score-certificate span {
+    margin: 0 10px;
+    color: #888;
+}
+
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 45px;
+    padding: 0 30px;
+}
+
+.certificate-footer > div:first-child,
+.certificate-footer > div:last-child {
+    width: 180px;
+}
+
+.certificate-footer p {
+    font-size: 12px;
+    min-height: 18px;
+    margin: 0 0 6px;
+}
+
+.footer-line {
+    height: 1px;
+    background: #000;
+}
+
+.certificate-footer span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #555;
+}
+
+
+.certificate-seal {
+    width: 75px;
+    height: 75px;
+    border: 3px solid #000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.certificate-id {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+
+.certificate-actions {
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.certificate-actions button {
+    flex: 1;
+    padding: 14px;
+    background: #fff;
+    color: #000;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.certificate-actions button:hover {
+    background: #000;
+    color: #fff;
+}
+
+.certificate-actions .certificate-home-btn {
+    background: #000;
+    color: #fff;
+    border-color: #444;
+}
+
+
+@media (max-width: 700px) {
+
+    .certificate-page {
+        padding: 15px 8px;
+    }
+
+    .certificate {
+        padding: 6px;
+    }
+
+    .certificate-border {
+        padding: 30px 18px;
+        min-height: 600px;
+    }
+
+    .certificate-logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    .certificate h1 {
+        font-size: 27px;
+        letter-spacing: 4px;
+    }
+
+    .certificate h2 {
+        font-size: 14px;
+        letter-spacing: 4px;
+    }
+
+    .certificate-presented {
+        margin-top: 25px;
+        font-size: 12px;
+    }
+
+    .certificate-name {
+        font-size: 25px;
+        word-break: break-word;
+    }
+
+    .certificate-text {
+        font-size: 11px;
+        line-height: 1.6;
+    }
+
+    .certificate-score {
+        gap: 18px;
+        margin-top: 25px;
+    }
+
+    .certificate-score strong {
+        font-size: 16px;
+    }
+
+    .certificate-score span {
+        font-size: 8px;
+    }
+
+    .total-score-certificate {
+        font-size: 9px;
+    }
+
+    .certificate-footer {
+        margin-top: 35px;
+        padding: 0 5px;
+    }
+
+    .certificate-footer > div:first-child,
+    .certificate-footer > div:last-child {
+        width: 100px;
+    }
+
+    .certificate-seal {
+        width: 55px;
+        height: 55px;
+        font-size: 13px;
+    }
+
+    .certificate-actions {
+        flex-direction: column;
+    }
+
+}
+
+
+@media print {
+
+    body {
+        background: #fff;
+    }
+
+    .certificate-page {
+        padding: 0;
+    }
+
+    .certificate {
+        box-shadow: none;
+        max-width: none;
+        width: 100%;
+    }
+
+    .certificate-actions {
+        display: none;
+    }
+
+    .certificate-border {
+        min-height: 650px;
+    }
+}
+    .reset-btn {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background: #000;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+    background: #fff;
+    color: #000;
+    border-color: #fff;
+}
+
+@media (max-width: 600px) {
+
+    .reset-btn {
+        width: 90%;
+        padding: 13px;
+    }
+
+}
+

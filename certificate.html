@@ -1,0 +1,515 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate - Monster Mind Quiz</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+          <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="certificate-page">
+
+        <div class="certificate">
+
+            <div class="certificate-border">
+
+
+                <img src="images/logo.jpeg"
+                     alt="Monster Mind Quiz Logo"
+                     class="certificate-logo">
+
+                <p class="certificate-small-title">
+                    MONSTER MIND QUIZ
+                </p>
+
+                <h1>
+                    CERTIFICATE
+                </h1>
+
+                <h2>
+                    OF COMPLETION
+                </h2>
+
+                <p class="certificate-presented">
+                    This certificate is proudly presented to
+                </p>
+
+                <div class="certificate-name"
+                     id="certificate-name">
+                    PLAYER NAME
+                </div>
+
+
+                <div class="name-line"></div>
+
+                <p class="certificate-text">
+
+                    For successfully completing all three levels
+                    of the <strong>Monster Mind Quiz</strong>,
+                    demonstrating knowledge and problem-solving
+                    skills in programming and web technologies.
+
+                </p>
+
+                <div class="certificate-score">
+
+                    <div>
+                        <span>LEVEL 1</span>
+                        <strong id="level1-score">0/20</strong>
+                    </div>
+
+                    <div>
+                        <span>LEVEL 2</span>
+                        <strong id="level2-score">0/20</strong>
+                    </div>
+
+                    <div>
+                        <span>LEVEL 3</span>
+                        <strong id="level3-score">0/20</strong>
+                    </div>
+
+                </div>
+
+                <div class="total-score-certificate">
+
+                    TOTAL SCORE:
+                    <strong id="total-score">0/60</strong>
+
+                    <span>|</span>
+
+                    PERCENTAGE:
+                    <strong id="final-percentage">0%</strong>
+
+                </div>
+
+                <div class="certificate-footer">
+
+                    <div>
+                        <p id="certificate-date">
+                            Date
+                        </p>
+
+                        <div class="footer-line"></div>
+
+                        <span>DATE</span>
+                    </div>
+
+
+                    <div class="certificate-seal">
+                        MMQ
+                    </div>
+
+
+                    <div>
+
+                        <p>
+                            MONSTER MIND
+                        </p>
+
+                        <div class="footer-line"></div>
+
+                        <span>QUIZ</span>
+
+                    </div>
+
+                </div>
+
+                <p class="certificate-id"
+                   id="certificate-id">
+                    Certificate ID: MMQ-000000
+                </p>
+
+            </div>
+
+        </div>
+        
+        <div class="certificate-actions">
+
+            <button onclick="window.print()">
+                DOWNLOAD CERTIFICATE
+            </button>
+
+            <button onclick="goHome()"
+                    class="certificate-home-btn">
+                BACK TO HOME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        
+        var playerName =
+            localStorage.getItem("player_name") || "Player";
+
+
+       
+        var level1Score =
+            Number(
+                localStorage.getItem("level1_score") || 0
+            );
+
+        var level2Score =
+            Number(
+                localStorage.getItem("level2_score") || 0
+            );
+
+        var level3Score =
+            Number(
+                localStorage.getItem("level3_score") || 0
+            );
+
+
+       
+        if (
+            level1Score < 12 ||
+            level2Score < 12 ||
+            level3Score < 12
+        ) {
+
+            alert(
+                "Complete and pass all three levels to receive the certificate."
+            );
+
+            window.location.href =
+                "levels.html";
+        }
+
+
+        var totalScore =
+            level1Score +
+            level2Score +
+            level3Score;
+
+
+        var finalPercentage =
+            Math.round(
+                (totalScore / 60) * 100
+            );
+
+
+        document.getElementById(
+            "certificate-name"
+        ).textContent = playerName;
+
+
+        document.getElementById(
+            "level1-score"
+        ).textContent =
+            level1Score + "/20";
+
+
+        document.getElementById(
+            "level2-score"
+        ).textContent =
+            level2Score + "/20";
+
+
+        document.getElementById(
+            "level3-score"
+        ).textContent =
+            level3Score + "/20";
+
+
+        document.getElementById(
+            "total-score"
+        ).textContent =
+            totalScore + "/60";
+
+
+        document.getElementById(
+            "final-percentage"
+        ).textContent =
+            finalPercentage + "%";
+
+
+        
+        var today =
+            new Date();
+
+        var formattedDate =
+            today.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                }
+            );
+
+
+        document.getElementById(
+            "certificate-date"
+        ).textContent =
+            formattedDate;
+
+
+        var certificateId =
+            "MMQ-" +
+            today.getFullYear() +
+            "-" +
+            String(totalScore).padStart(2, "0") +
+            "-" +
+            Math.floor(
+                Math.random() * 9000 + 1000
+            );
+
+
+        document.getElementById(
+            "certificate-id"
+        ).textContent =
+            "Certificate ID: " + certificateId;
+
+        function downloadCertificate() {
+
+    const { jsPDF } = window.jspdf;
+
+    var pdf = new jsPDF({
+        orientation: "landscape",
+        unit: "mm",
+        format: "a4"
+    });
+
+    var pageWidth = 297;
+    var pageHeight = 210;
+
+    
+    pdf.setFillColor(255, 255, 255);
+    pdf.rect(0, 0, pageWidth, pageHeight, "F");
+
+   
+    pdf.setDrawColor(0, 0, 0);
+    pdf.setLineWidth(1);
+    pdf.rect(8, 8, pageWidth - 16, pageHeight - 16);
+
+    pdf.setLineWidth(0.5);
+    pdf.rect(13, 13, pageWidth - 26, pageHeight - 26);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+    pdf.text(
+        "MONSTER MIND QUIZ",
+        pageWidth / 2,
+        28,
+        { align: "center" }
+    );
+
+    pdf.setFontSize(28);
+    pdf.text(
+        "CERTIFICATE",
+        pageWidth / 2,
+        45,
+        { align: "center" }
+    );
+
+    pdf.setFontSize(14);
+    pdf.text(
+        "OF COMPLETION",
+        pageWidth / 2,
+        53,
+        { align: "center" }
+    );
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "This certificate is proudly presented to",
+        pageWidth / 2,
+        68,
+        { align: "center" }
+    );
+
+    pdf.setFont("times", "bold");
+    pdf.setFontSize(24);
+
+    pdf.text(
+        playerName.toUpperCase(),
+        pageWidth / 2,
+        82,
+        { align: "center" }
+    );
+
+    pdf.setLineWidth(0.4);
+    pdf.line(75, 86, 222, 86);
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(10);
+
+    var description =
+        "For successfully completing all three levels of the Monster Mind Quiz, " +
+        "demonstrating knowledge and problem-solving skills in programming and web technologies.";
+
+    var descriptionLines =
+        pdf.splitTextToSize(description, 190);
+
+    pdf.text(
+        descriptionLines,
+        pageWidth / 2,
+        99,
+        { align: "center" }
+    );
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(10);
+
+    pdf.text(
+        "LEVEL 1",
+        75,
+        125,
+        { align: "center" }
+    );
+
+    pdf.text(
+        "LEVEL 2",
+        148.5,
+        125,
+        { align: "center" }
+    );
+
+    pdf.text(
+        "LEVEL 3",
+        222,
+        125,
+        { align: "center" }
+    );
+
+    pdf.setFontSize(16);
+
+    pdf.text(
+        level1Score + "/20",
+        75,
+        135,
+        { align: "center" }
+    );
+
+    pdf.text(
+        level2Score + "/20",
+        148.5,
+        135,
+        { align: "center" }
+    );
+
+    pdf.text(
+        level3Score + "/20",
+        222,
+        135,
+        { align: "center" }
+    );
+
+    // Total
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(11);
+
+    pdf.text(
+        "TOTAL SCORE: " + totalScore + "/60",
+        105,
+        151,
+        { align: "center" }
+    );
+
+    pdf.text(
+        "PERCENTAGE: " + finalPercentage + "%",
+        192,
+        151,
+        { align: "center" }
+    );
+
+    // Date
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(9);
+
+    pdf.text(
+        formattedDate,
+        65,
+        174,
+        { align: "center" }
+    );
+
+    pdf.line(35, 178, 95, 178);
+
+    pdf.setFontSize(8);
+
+    pdf.text(
+        "DATE",
+        65,
+        183,
+        { align: "center" }
+    );
+
+    pdf.setLineWidth(1);
+    pdf.circle(148.5, 174, 14);
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(12);
+
+    pdf.text(
+        "MMQ",
+        148.5,
+        177,
+        { align: "center" }
+    );
+
+    pdf.setFontSize(9);
+
+    pdf.text(
+        "MONSTER MIND",
+        232,
+        174,
+        { align: "center" }
+    );
+
+    pdf.line(202, 178, 262, 178);
+
+    pdf.setFontSize(8);
+
+    pdf.text(
+        "QUIZ",
+        232,
+        183,
+        { align: "center" }
+    );
+
+    pdf.setFontSize(7);
+
+    pdf.text(
+        document.getElementById("certificate-id").textContent,
+        pageWidth / 2,
+        197,
+        { align: "center" }
+    );
+
+    var safeName =
+        playerName
+            .replace(/[^a-z0-9]/gi, "_")
+            .toLowerCase();
+
+    pdf.save(
+        "Monster_Mind_Quiz_Certificate_" +
+        safeName +
+        ".pdf"
+    );
+}
+        function goHome() {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

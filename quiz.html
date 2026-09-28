@@ -1,0 +1,73 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Monster Mind Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="quiz-container">
+
+        <div class="quiz-header">
+            <h1>MONSTER MIND</h1>
+            <span id="level-title">LEVEL 1</span>
+        </div>
+
+        <div class="progress-info">
+            <span id="question-number">Question 1 of 20</span>
+            <span id="score">Score: 0</span>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+
+        <div class="question-card">
+
+            <h2 id="question">
+                Question will appear here
+            </h2>
+
+            <div class="options">
+
+                <button class="option" onclick="selectAnswer(0)">
+                    <span>A</span>
+                    <p id="option0">Option A</p>
+                </button>
+
+                <button class="option" onclick="selectAnswer(1)">
+                    <span>B</span>
+                    <p id="option1">Option B</p>
+                </button>
+
+                <button class="option" onclick="selectAnswer(2)">
+                    <span>C</span>
+                    <p id="option2">Option C</p>
+                </button>
+
+                <button class="option" onclick="selectAnswer(3)">
+                    <span>D</span>
+                    <p id="option3">Option D</p>
+                </button>
+
+            </div>
+
+            <button id="next-btn" onclick="nextQuestion()" disabled>
+                NEXT
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="quiz.js"></script>
+
+</body>
+
+</html>

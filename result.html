@@ -1,0 +1,284 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quiz Result - Monster Mind Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="result-container">
+
+        <img src="images/logo.jpeg"
+             alt="Monster Mind Quiz Logo"
+             class="result-logo">
+
+        <h1>QUIZ RESULT</h1>
+
+        <p class="result-level" id="result-level">
+            LEVEL 1
+        </p>
+
+        <p class="player-name" id="player-name">
+            Player
+        </p>
+
+
+        <div class="result-card">
+
+            <p class="result-label">
+                YOUR SCORE
+            </p>
+
+            <div class="score-display">
+                <span id="score">0</span>
+                <span class="total-score">/ 20</span>
+            </div>
+
+            <p class="percentage" id="percentage">
+                0%
+            </p>
+
+            <div class="result-status" id="result-status">
+                RESULT
+            </div>
+
+            <p class="result-message" id="result-message">
+                Your result will appear here.
+            </p>
+
+        </div>
+
+        <div class="result-buttons">
+
+            <button id="next-level-btn"
+                    onclick="nextLevel()">
+                NEXT LEVEL
+            </button>
+
+            <button id="certificate-btn"
+                    onclick="openCertificate()">
+                GET CERTIFICATE
+            </button>
+
+            <button id="retry-btn"
+                    onclick="retryLevel()">
+                RETRY LEVEL
+            </button>
+
+            <button onclick="goLevels()"
+                    class="secondary-btn">
+                CHOOSE LEVEL
+            </button>
+
+            <button onclick="goHome()"
+                    class="secondary-btn">
+                HOME
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        var urlParams =
+            new URLSearchParams(window.location.search);
+
+        var selectedLevel =
+            urlParams.get("level") || "level1";
+
+
+        var playerName =
+            localStorage.getItem("player_name") || "Player";
+
+        var score =
+            Number(
+                localStorage.getItem(
+                    selectedLevel + "_score"
+                ) || 0
+            );
+
+        var percentage =
+            Number(
+                localStorage.getItem(
+                    selectedLevel + "_percentage"
+                ) || 0
+            );
+
+        var scoreElement =
+            document.getElementById("score");
+
+        var percentageElement =
+            document.getElementById("percentage");
+
+        var levelElement =
+            document.getElementById("result-level");
+
+        var nameElement =
+            document.getElementById("player-name");
+
+        var statusElement =
+            document.getElementById("result-status");
+
+        var messageElement =
+            document.getElementById("result-message");
+
+        var nextButton =
+            document.getElementById("next-level-btn");
+
+        var certificateButton =
+            document.getElementById("certificate-btn");
+
+        var retryButton =
+            document.getElementById("retry-btn");
+
+
+        var levelNames = {
+
+            level1: "LEVEL 1 - EASY",
+
+            level2: "LEVEL 2 - MEDIUM",
+
+            level3: "LEVEL 3 - DIFFICULT"
+
+        };
+
+        levelElement.textContent =
+            levelNames[selectedLevel];
+
+        nameElement.textContent =
+            playerName;
+
+        scoreElement.textContent =
+            score;
+
+        percentageElement.textContent =
+            percentage + "%";
+
+
+        if (score >= 12) {
+
+            statusElement.textContent =
+                "PASSED";
+
+            statusElement.classList.add("passed");
+
+            if (selectedLevel === "level1") {
+
+                messageElement.textContent =
+                    "Congratulations! Level 2 has been unlocked.";
+
+                nextButton.style.display =
+                    "block";
+
+                certificateButton.style.display =
+                    "none";
+            }
+
+
+            else if (selectedLevel === "level2") {
+
+                messageElement.textContent =
+                    "Excellent! Level 3 has been unlocked.";
+
+                nextButton.style.display =
+                    "block";
+
+                certificateButton.style.display =
+                    "none";
+            }
+
+
+            else if (selectedLevel === "level3") {
+
+                messageElement.textContent =
+                    "Congratulations! You completed all 3 levels.";
+
+                nextButton.style.display =
+                    "none";
+
+                certificateButton.style.display =
+                    "block";
+            }
+
+
+            retryButton.style.display =
+                "block";
+
+        }
+
+        else {
+
+            statusElement.textContent =
+                "FAILED";
+
+            statusElement.classList.add("failed");
+
+            messageElement.textContent =
+                "You need at least 12 correct answers to pass.";
+
+            nextButton.style.display =
+                "none";
+
+            certificateButton.style.display =
+                "none";
+
+            retryButton.style.display =
+                "block";
+        }
+
+
+        function nextLevel() {
+
+            if (selectedLevel === "level1") {
+
+                window.location.href =
+                    "quiz.html?level=level2";
+
+            }
+
+            else if (selectedLevel === "level2") {
+
+                window.location.href =
+                    "quiz.html?level=level3";
+
+            }
+        }
+
+        function openCertificate() {
+
+            window.location.href =
+                "certificate.html";
+        }
+
+
+        function retryLevel() {
+
+            window.location.href =
+                "quiz.html?level=" + selectedLevel;
+        }
+
+        function goLevels() {
+
+            window.location.href =
+                "levels.html";
+        }
+
+
+        function goHome() {
+
+            window.location.href =
+                "index.html";
+        }
+
+    </script>
+
+</body>
+
+</html>
