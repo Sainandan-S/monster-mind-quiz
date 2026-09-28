@@ -1,0 +1,275 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Choose Level - Monster Mind Quiz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="levels-container">
+
+        <div class="levels-header">
+
+            <button class="back-btn" onclick="goHome()">
+                ← HOME
+            </button>
+
+            <img src="images/logo.jpeg"
+                 alt="Monster Mind Quiz Logo"
+                 class="levels-logo">
+
+            <h1>CHOOSE YOUR LEVEL</h1>
+
+            <p>Score 60% to unlock the next level</p>
+
+        </div>
+
+        <div class="levels-grid">
+
+            <div class="level-card unlocked" id="level1-card">
+
+                <div class="level-number">01</div>
+
+                <h2>LEVEL 1</h2>
+
+                <h3>EASY</h3>
+
+                <p class="questions-count">
+                    20 QUESTIONS
+                </p>
+
+                <p class="status" id="level1-status">
+                    UNLOCKED
+                </p>
+
+                <button onclick="startLevel(1)">
+                    START LEVEL
+                </button>
+
+            </div>
+
+            <div class="level-card locked" id="level2-card">
+
+                <div class="level-number">02</div>
+
+                <div class="lock-icon" id="level2-lock">
+                    🔒
+                </div>
+
+                <h2>LEVEL 2</h2>
+
+                <h3>MEDIUM</h3>
+
+                <p class="questions-count">
+                    20 QUESTIONS
+                </p>
+
+                <p class="status" id="level2-status">
+                    LOCKED
+                </p>
+
+                <button id="level2-button"
+                        onclick="startLevel(2)"
+                        disabled>
+                    LOCKED
+                </button>
+
+            </div>
+
+            <div class="level-card locked" id="level3-card">
+
+                <div class="level-number">03</div>
+
+                <div class="lock-icon" id="level3-lock">
+                    🔒
+                </div>
+
+                <h2>LEVEL 3</h2>
+
+                <h3>DIFFICULT</h3>
+
+                <p class="questions-count">
+                    20 QUESTIONS
+                </p>
+
+                <p class="status" id="level3-status">
+                    LOCKED
+                </p>
+
+                <button id="level3-button"
+                        onclick="startLevel(3)"
+                        disabled>
+                    LOCKED
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="level-message" id="level-message"></div>
+        <button class="reset-btn" onclick="resetQuiz()">RESET</button>
+
+    </div>
+
+
+    <script>
+
+        function updateLevels() {
+
+            var level1Score =
+                Number(localStorage.getItem("level1_score") || 0);
+
+            var level2Score =
+                Number(localStorage.getItem("level2_score") || 0);
+
+            document.getElementById("level1-status").textContent =
+                "UNLOCKED";
+
+            if (level1Score >= 12) {
+
+                var level2Card =
+                    document.getElementById("level2-card");
+
+                level2Card.classList.remove("locked");
+                level2Card.classList.add("unlocked");
+
+                document.getElementById("level2-lock").textContent =
+                    "✓";
+
+                document.getElementById("level2-status").textContent =
+                    "UNLOCKED";
+
+                var level2Button =
+                    document.getElementById("level2-button");
+
+                level2Button.disabled = false;
+                level2Button.textContent = "START LEVEL";
+
+            }
+
+
+            if (level2Score >= 12) {
+
+                var level3Card =
+                    document.getElementById("level3-card");
+
+                level3Card.classList.remove("locked");
+                level3Card.classList.add("unlocked");
+
+                document.getElementById("level3-lock").textContent =
+                    "✓";
+
+                document.getElementById("level3-status").textContent =
+                    "UNLOCKED";
+
+                var level3Button =
+                    document.getElementById("level3-button");
+
+                level3Button.disabled = false;
+                level3Button.textContent = "START LEVEL";
+
+            }
+
+            var message =
+                document.getElementById("level-message");
+
+            if (level2Score >= 12) {
+
+                message.textContent =
+                    "All levels unlocked! Complete the challenge.";
+
+            } else if (level1Score >= 12) {
+
+                message.textContent =
+                    "Level 1 completed! Level 2 is now unlocked.";
+
+            } else {
+
+                message.textContent =
+                    "Complete Level 1 with 12/20 to unlock Level 2.";
+
+            }
+        }
+
+        function startLevel(level) {
+
+            if (level === 1) {
+
+                window.location.href =
+                    "quiz.html?level=level1";
+
+            } else if (level === 2) {
+
+                var level1Score =
+                    Number(localStorage.getItem("level1_score") || 0);
+
+                if (level1Score >= 12) {
+
+                    window.location.href =
+                        "quiz.html?level=level2";
+
+                } else {
+
+                    alert(
+                        "Pass Level 1 with at least 12/20 marks first."
+                    );
+                }
+
+            } else if (level === 3) {
+
+                var level2Score =
+                    Number(localStorage.getItem("level2_score") || 0);
+
+                if (level2Score >= 12) {
+
+                    window.location.href =
+                        "quiz.html?level=level3";
+
+                } else {
+
+                    alert(
+                        "Pass Level 2 with at least 12/20 marks first."
+                    );
+                }
+            }
+        }
+
+        function goHome() {
+
+            window.location.href = "index.html";
+
+        }
+
+        updateLevels();
+        function resetQuiz() {
+
+    var confirmReset =
+        confirm(
+            "Are you sure you want to reset the quiz and start as a new player?"
+        );
+
+    if (!confirmReset) {
+        return;
+    }
+
+    localStorage.removeItem("player_name");
+
+    localStorage.removeItem("level1_score");
+    localStorage.removeItem("level2_score");
+    localStorage.removeItem("level3_score");
+
+    localStorage.removeItem("level1_percentage");
+    localStorage.removeItem("level2_percentage");
+    localStorage.removeItem("level3_percentage");
+
+    window.location.href = "name.html";
+}
+
+    </script>
+
+</body>
+</html>
